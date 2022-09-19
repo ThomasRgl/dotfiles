@@ -7,6 +7,10 @@
 # ~/.bashrc
 #
 
+#history
+export HISTCONTROL=erasedups
+export HISTSIZE=3000
+
 #ocaml
 eval $(opam env)
 

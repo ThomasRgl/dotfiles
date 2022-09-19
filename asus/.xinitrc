@@ -50,6 +50,7 @@ fi
 
 #keyboard Layout
 setxkbmap fr &
+numlockx &
 
 #display resolution
 #xrender --output Virtual-1 1920x1080 &
