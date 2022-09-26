@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=25:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "JetBrains Mono Nerd Font:pixelsize=17:antialias=true:autohint=true";
+static int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -73,7 +73,7 @@ static unsigned int cursorthickness = 2;
  *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
  * 0: disable (render all U25XX glyphs normally from the font).
  */
-const int boxdraw = 0;
+const int boxdraw = 1;
 const int boxdraw_bold = 0;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
@@ -108,46 +108,54 @@ unsigned int tabspaces = 8;
 /* bg opacity */
 float alpha = 0.9;
 
-/* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
-	/* 8 normal colors */
-	"#2e3436",
-	"#cc0000",
-	"#4e9e06",
-	"#c4a000",
-	"#3465a4",
-	"#75507b",
-	"#06989a",
-	"#d3d7cf",
-
-	/* 8 bright colors */
-	"#555753",
-	"#ef2929",
-	"#8ae234",
-	"#ff9712",
-	"#729fcf",
-	"#ad7fa8",
-	"#1ab2e2",
-	"#eeeeec",
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
-	"#181818",
-	"#dedede",
+//
+static const char *altcolorname[] = {
+	"#fdf6e3", /* base00 */
+	"#dc322f", /* base08 */
+	"#859900", /* base0B */
+	"#b58900", /* base0A */
+	"#268bd2", /* base0D */
+	"#6c71c4", /* base0E */
+	"#2aa198", /* base0C */
+	"#586e75", /* base05 */
+	"#839496", /* base03 */
+	"#cb4b16", /* base09 */
+	"#eee8d5", /* base01 */
+	"#93a1a1", /* base02 */
+	"#657b83", /* base04 */
+	"#073642", /* base06 */
+	"#d33682", /* base0F */
+	"#002b36", /* base07 */
 };
 
+// material darker
+static const char *colorname[] = {
+	"#212121",  /*  0: black    */
+	"#DC6068",  /*  1: red      */
+	"#ABCF76",  /*  2: green    */
+	"#E6B455",  /*  3: yellow   */
+	"#6E98EB",  /*  4: blue     */
+	"#B480D6",  /*  5: magenta  */
+	"#71C6E7",  /*  6: cyan     */
+	"#B0BEC5",  /*  7: white    */
+	"#1A1A1A",  /*  8: brblack  */
+	"#F07178",  /*  9: brred    */
+	"#C3E88D",  /* 10: brgreen  */
+	"#FFCB6B",  /* 11: bryellow */
+	"#82AAFF",  /* 12: brblue   */
+	"#C792EA",  /* 13: brmagenta*/
+	"#89DDFF",  /* 14: brcyan   */
+	"#EEFFFF",  /* 15: brwhite  */
+};
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 259;
-unsigned int defaultbg = 258;
-static unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+unsigned int defaultfg = 7;
+unsigned int defaultbg = 0;
+static unsigned int defaultcs = 15;
+static unsigned int defaultrcs = 0;
 
 /*
  * Default shape of cursor
@@ -221,6 +229,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ TERMMOD,           	XK_A,          	swapcolors,     {.i =  0} },
 };
 
 /*

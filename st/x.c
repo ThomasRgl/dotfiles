@@ -778,7 +778,7 @@ sixd_to_16bit(int x)
 
 const char* getcolorname(int i)
 {
-    return  colorname[i];
+    return (usealtcolors) ?  altcolorname[i] : colorname[i];
 }
 
 int
