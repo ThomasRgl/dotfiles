@@ -51,9 +51,9 @@ return packer.startup(function(use)
     -------------------
     -- lsp server
     use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
-    use 'jose-elias-alvarez/null-ls.nvim' 
+    use 'jose-elias-alvarez/null-ls.nvim'
     
-    use  "williamboman/mason.nvim" 
+    use  "williamboman/mason.nvim"
     use  "williamboman/mason-lspconfig.nvim"
     
     ---------------------

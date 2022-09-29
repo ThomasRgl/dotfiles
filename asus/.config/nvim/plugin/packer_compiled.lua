@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/home/trgk/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
-  ["bufferline.nvim"] = {
-    loaded = true,
-    path = "/home/trgk/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
-    url = "https://github.com/akinsho/bufferline.nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/trgk/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -139,10 +134,10 @@ _G.packer_plugins = {
     path = "/home/trgk/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["material.nvim"] = {
+  ["nightfox.nvim"] = {
     loaded = true,
-    path = "/home/trgk/.local/share/nvim/site/pack/packer/start/material.nvim",
-    url = "https://github.com/marko-cerovac/material.nvim"
+    path = "/home/trgk/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -174,11 +169,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/trgk/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
     url = "https://github.com/rcarriga/nvim-dap-ui"
-  },
-  ["nvim-jdtls"] = {
-    loaded = true,
-    path = "/home/trgk/.local/share/nvim/site/pack/packer/start/nvim-jdtls",
-    url = "https://github.com/mfussenegger/nvim-jdtls"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -219,11 +209,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/trgk/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
-  },
-  ["rust-tools.nvim"] = {
-    loaded = true,
-    path = "/home/trgk/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
-    url = "https://github.com/simrat39/rust-tools.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

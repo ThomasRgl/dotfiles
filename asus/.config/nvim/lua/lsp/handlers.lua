@@ -10,14 +10,14 @@ M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities.offsetEncoding = { "utf-16" }
 M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
--- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
+--vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
 
 M.setup = function()
 	local config = {
-		virtual_text = false,
+		virtual_text = true,
 		signs = false,
 		underline = true,
-		update_in_insert = true,
+		update_in_insert = false,
 		severity_sort = true,
 		float = {
 			focusable = true,

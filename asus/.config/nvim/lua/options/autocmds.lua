@@ -9,12 +9,12 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 	end,
 })
 
--- use 2 spaces for cpp
+-- use 4 spaces for cpp
 vim.api.nvim_create_autocmd({ 'FileType' }, {
 	pattern = {'cpp', 'cc', 'hpp', 'hh'},
 	callback = function()
-		vim.opt.ts = 2
-		vim.opt.sw = 2
+		vim.opt.ts = 4
+		vim.opt.sw = 4
 		vim.opt.expandtab = true
 	end,
 })
