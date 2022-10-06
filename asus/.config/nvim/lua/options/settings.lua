@@ -22,7 +22,7 @@ opt.fileencoding = 'utf-8'
 opt.expandtab = true
 opt.smarttab = true
 opt.shiftwidth = 4
-opt.tabstop = 4
+opt.tabstop = 4 --WHAT
 opt.smartindent = true
 
 --search
