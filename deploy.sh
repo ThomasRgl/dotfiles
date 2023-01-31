@@ -1,4 +1,4 @@
 #!/bin/sh
 
-stow -d ~/.dotfiles/asus -t ~/ .
+#stow -d ~/.dotfiles/asus -t ~/ .
 
