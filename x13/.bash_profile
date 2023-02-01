@@ -13,7 +13,7 @@
 
 #history
 export HISTCONTROL=erasedups
-export HISTSIZE=20000
+export HISTSIZE=40000
 
 #ocaml
 eval $(opam env)
