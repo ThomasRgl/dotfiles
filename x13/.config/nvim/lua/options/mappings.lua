@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = ' '
 
-map('n', '<leader><leader>', ':NvimTreeToggle<cr>', opts)
+--map('n', '<leader><leader>', ':NvimTreeToggle<cr>', opts)
 --map('n', '<leader>e', ':help option-list<CR>', opts )
 
 
@@ -12,6 +12,7 @@ map('n', '<leader><leader>', ':NvimTreeToggle<cr>', opts)
 --
 --
 vim.api.nvim_create_user_command('Pdf', '!pandoc % -o %:r.pdf', { nargs = 0 })
+--vim.api.nvim_create_user_command('pdf', '!pandoc % -o %:r.pdf', { nargs = 0 })
 vim.api.nvim_create_user_command('Slide', '!pandoc -t beamer % -o %:r.pdf', { nargs = 0 })
 vim.api.nvim_create_user_command('Cd', 'lcd %:p:h', { nargs = 0 })
 --

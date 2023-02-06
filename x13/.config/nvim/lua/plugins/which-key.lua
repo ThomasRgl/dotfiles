@@ -1,5 +1,6 @@
 local status_ok, wk = pcall(require, 'which-key')
 if not status_ok then
+	print 'which-key not found!'
 	return
 end
 
@@ -47,32 +48,50 @@ local opts = {
 	noremap = true, -- use `noremap` when creating keymaps
 	nowait = false, -- use `nowait` when creating keymaps
 }
--- }}}
--- MAPS {{{
--- Set leader {{{
-vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', { noremap = true, silent = true })
+-- MAPS 
+-- Set leader
+--vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
--- }}}
--- resize {{{
+-- 
+
+-- resize 
 vim.api.nvim_set_keymap('n', '<c-up>', '<cmd>resize -2<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-down>', '<cmd>resize +2<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<c-left>', '<cmd>vertical resize -2<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<c-left>', '<cmd>vertical resize +2<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-right>', '<cmd>vertical resize -2<cr>', { noremap = true, silent = true })
--- }}}
--- indent {{{
+-- 
+
+
+-- indent 
 vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '>', '>gv', { noremap = true, silent = true })
--- }}}
--- open/close folds with enter key {{{
+-- 
+
+
+-- open/close folds with enter key 
 vim.api.nvim_set_keymap('n', '<cr>', "@=(foldlevel('.')?'za':\"<Space>\")<CR>", { noremap = true, silent = true })
--- }}}
--- terminal {{{
+-- 
+
+
+-- terminal
 vim.api.nvim_set_keymap('n', '<home>', '<cmd>ToggleTerm<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<home>', '<cmd>ToggleTerm<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<home>', '<cmd>ToggleTerm<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<home>', '<cmd>ToggleTerm<cr>', { noremap = true, silent = true })
--- }}}
--- misc {{{
+--
+
+-- Telescope
+local builtin_telescope = require('telescope.builtin')
+--vim.api.nvim_set_keymap('n', 'ff', '<cmd>Telescope find_files<cr>', { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', 'fg', '<cmd>Telescope live_grep<cr>' , { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', 'fb', '<cmd>Telescope buffers<cr>'   , { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', 'fh', '<cmd>Telescope<cr>'           , { noremap = true, silent = true })
+vim.keymap.set('n', 'ff', builtin_telescope.find_files, {})
+vim.keymap.set('n', 'fg', builtin_telescope.live_grep, {})
+vim.keymap.set('n', 'fb', builtin_telescope.buffers, {})
+vim.keymap.set('n', 'fh', builtin_telescope.help_tags, {})
+
+-- misc 
 vim.api.nvim_set_keymap('n', '<c-space>', '<cmd>nohlsearch<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<C-p>', '"_dp', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('x', 'E', ":move '<-2<cr>gv-gv", { noremap = true, silent = true })
@@ -80,14 +99,20 @@ vim.api.nvim_set_keymap('x', 'N', ":move '>+1<cr>gv-gv", { noremap = true, silen
 vim.api.nvim_set_keymap('n', '<c-\\>', 'z=1<cr><cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-s>', '<cmd>call ColChange()<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<cr>', { noremap = true, silent = true })
--- }}}
+-- 
+
+-- copy paste + clipboard
+vim.api.nvim_set_keymap('v', '<C-y>', '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-p>', '"+P', { noremap = true, silent = true })
+--
+
 -- vim.api.nvim_set_keymap("n", "", "<cmd><cr>", { noremap = true, silent = true })
--- }}}
--- leader mappings {{{
--- TODO create entire treesitter section
+
+
 local mappings = {
 	['rr'] = 'Search and replace all',
 	['rs'] = 'Search and replace',
+
 	--   ["b"] = {"<cmd>FindrBuffers<cr>", "List buffers"},
 	['k'] = { '<cmd>bd!<cr>', 'Kill buffer' },
 	['n'] = { '<cmd>bn<cr>', 'Next buffer' },
@@ -167,5 +192,5 @@ local mappings = {
 		t = {"<cmd>lua require'dap'.terminate()<cr>", 'Terminate'},
 	}
 }
--- }}}
+
 wk.register(mappings, opts)

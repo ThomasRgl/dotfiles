@@ -44,11 +44,11 @@ opt.termguicolors = true
 opt.cursorline = true
 
 --lines
-opt.wrap = false
+opt.wrap = true
 opt.scrolloff = 15
 opt.number = true
 
--- !! auto save view!!
+-- !! auto save view!!  ! auto save view!!! auto save view!!! auto save view!!! auto save view!!! auto save view!!! auto save view!!
 --opt.relativenumber = true
 opt.hidden = true
 opt.undofile = true
@@ -64,7 +64,7 @@ opt.timeoutlen = 300
 
 opt.fillchars.eob = ' '
 opt.autochdir = false
---opt.clipboard='unnamedplus'
+opt.clipboard='unnamedplus'
 
 --????
 opt.iskeyword:prepend { '-' }

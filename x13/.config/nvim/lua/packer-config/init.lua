@@ -1,8 +1,8 @@
---local ok, packer = pcall(require, 'packer')
---if not ok then
---	print 'packer.nvim not found!'
---	return
---end
+local ok, packer = pcall(require, 'packer')
+if not ok then
+	print 'packer.nvim not found!'
+	return
+end
 --
 --require('packer').init {
 --	display = {
@@ -23,18 +23,75 @@
 --return require('packer').startup(function(use)
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
-    use 'EdenEast/nightfox.nvim'
-    use 'nvim-lualine/lualine.nvim'
-    
-    use 'folke/which-key.nvim'
 
+    -- cosmetic
+    use 'kyazdani42/nvim-web-devicons' -- icons
+    use 'EdenEast/nightfox.nvim'       -- theme
+    use 'nvim-lualine/lualine.nvim'
+    use 'sunjon/shade.nvim'
+    
+
+
+    -- mapping
+    use 'folke/which-key.nvim' -- mapping info
+
+
+
+    -- lsp 
+    use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+    }
+    
+    --cmp NEW
+    --https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
+    --
+    use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+    use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+    use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+    use 'L3MON4D3/LuaSnip' -- Snippets plugin
+    --
+    use 'onsails/lspkind-nvim'  
+
+    -- cmp OLD ( old hrsh7th config )
+    --
+    -- use 'hrsh7th/cmp-nvim-lsp'
+	-- use 'hrsh7th/cmp-buffer'
+	-- use 'hrsh7th/cmp-path'
+	-- use 'hrsh7th/cmp-cmdline'
+	-- use 'hrsh7th/nvim-cmp'
+
+    -- use 'honza/vim-snippets'
+	-- use 'dcampos/nvim-snippy'
+	-- use 'dcampos/cmp-snippy'
+
+
+
+
+    -- nvim tree
     use {
 	 	'kyazdani42/nvim-tree.lua',
-	 	requires = {
-	 		'kyazdani42/nvim-web-devicons', -- optional, for file icons
-	 	},
 	 	tag = 'nightly', -- optional, updated every week. (see issue #1193)
 	}
+    
+    --treesitter
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    }
+    use 'nvim-treesitter/nvim-treesitter-refactor' --treesitter refactor
+
+    -- telescope
+    use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    -- or                            , branch = '0.1.x',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    
 
 end)
 

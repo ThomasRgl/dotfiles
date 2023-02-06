@@ -1,21 +1,42 @@
+-- :h option-list
+-- :h option
+
+-- :h vim-lsp
+-- :LspInfo
+-- :h lspconfig-server-configurations
+
 --if not pcall(require, 'impatient') then
 --    print 'impatient.nvim not found! '
 --end
 --
---
+
+
 require('options.settings')
+
+require('packer-config')
+
 require('options.mappings')
+require('plugins.which-key')
 require('options.autocmds')
 
 
 require('plugins.nvim-tree')
 require('plugins.lualine')
-require('plugins.which-key')
+require('plugins.treesitter')
+require('plugins.telescope')
+--require('plugins.shade')
 
---require('options.settings')
---
---
-require('packer-config')
+-- lsp
+--require("lsp-config.language-servers")
+require('lsp')
+--require('lsp-config.nvim-cmp')
+
+
+
+
+
+
+
 --
 --require('options.mappings')
 --require('options.autocmds')
