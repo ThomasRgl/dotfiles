@@ -21,19 +21,28 @@ end
 --]]
 
 --return require('packer').startup(function(use)
-return require('packer').startup(function()
+return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
+    use 'lewis6991/impatient.nvim'
+    use 'nvim-lua/plenary.nvim'
 
     -- cosmetic
     use 'kyazdani42/nvim-web-devicons' -- icons
     use 'EdenEast/nightfox.nvim'       -- theme
     use 'nvim-lualine/lualine.nvim'
     use 'sunjon/shade.nvim'
-    
 
 
     -- mapping
     use 'folke/which-key.nvim' -- mapping info
+
+
+    --other
+    use 'kdheepak/lazygit.nvim'
+	use 'windwp/nvim-autopairs'
+	use 'numToStr/Comment.nvim'
+	use 'folke/trouble.nvim'
+    use 'norcalli/nvim-colorizer.lua'
 
 
 
@@ -43,7 +52,7 @@ return require('packer').startup(function()
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     }
-    
+
     --cmp NEW
     --https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
     --
@@ -52,7 +61,7 @@ return require('packer').startup(function()
     use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
     use 'L3MON4D3/LuaSnip' -- Snippets plugin
     --
-    use 'onsails/lspkind-nvim'  
+    use 'onsails/lspkind-nvim'
 
     -- cmp OLD ( old hrsh7th config )
     --
@@ -74,7 +83,8 @@ return require('packer').startup(function()
 	 	'kyazdani42/nvim-tree.lua',
 	 	tag = 'nightly', -- optional, updated every week. (see issue #1193)
 	}
-    
+
+
     --treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -85,13 +95,13 @@ return require('packer').startup(function()
     }
     use 'nvim-treesitter/nvim-treesitter-refactor' --treesitter refactor
 
+
     -- telescope
     use {
       'nvim-telescope/telescope.nvim', tag = '0.1.1',
     -- or                            , branch = '0.1.x',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
-    
 
 end)
 

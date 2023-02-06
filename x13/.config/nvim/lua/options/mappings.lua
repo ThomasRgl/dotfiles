@@ -7,7 +7,6 @@ vim.g.mapleader = ' '
 --map('n', '<leader>e', ':help option-list<CR>', opts )
 
 
-
 ----- from settings.lua
 --
 --

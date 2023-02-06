@@ -1,3 +1,9 @@
+if not pcall(require, 'impatient') then
+    print 'impatient.nvim not found! '
+end
+
+
+
 -- :h option-list
 -- :h option
 
@@ -25,6 +31,9 @@ require('plugins.lualine')
 require('plugins.treesitter')
 require('plugins.telescope')
 --require('plugins.shade')
+require('plugins.autopairs')
+require('plugins.comments')
+require('plugins.trouble')
 
 -- lsp
 --require("lsp-config.language-servers")

@@ -52,7 +52,7 @@ configs.setup {
     refactor = {
         --Highlight current scope
 --        highlight_current_scope = { enable = true },
-        
+
         --Smart Rename
         smart_rename = {
             enable = true,
