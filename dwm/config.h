@@ -76,14 +76,18 @@ static const char *roficmd[] = { "rofi", "-show", "run", NULL };
 static const char *termcmd[] = { "st", NULL };
 static const char *setkbfr[] = { "setxkbmap", "fr", NULL };
 static const char *setkbus[] = { "setxkbmap", "us", NULL };
+static const char *screenshot[] = { "flameshot", "gui", NULL };
+
 
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY,                       XK_backslash,       spawn,          {.v = screenshot} },
 	{ MODKEY,                       XK_q,      spawn,          {.v = setkbfr} },
 	{ MODKEY,                       XK_a,      spawn,          {.v = setkbus} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = roficmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
