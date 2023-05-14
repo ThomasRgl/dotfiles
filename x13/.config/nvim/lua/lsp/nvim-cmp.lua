@@ -1,11 +1,34 @@
 local luasnip = require 'luasnip'
 local cmp = require 'cmp'
 local lspkind = require 'lspkind'
+-- local vnsip = require 'vsnip'
+-- local snippy = require('snippy')
+
+-- this function is only needed for vsnip
+-- local feedkey = function(key, mode)
+--   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+-- end
+
+
+function leave_snippet()
+    if
+        ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
+        and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
+        and not require('luasnip').session.jump_active
+    then
+        require('luasnip').unlink_current()
+    end
+end
+
+vim.api.nvim_command([[
+    autocmd ModeChanged * lua leave_snippet()
+]])
 
 
 cmp.setup {
   snippet = {
     expand = function(args)
+      -- vim.fn["vsnip#anonymous"](args.body) --jump bug fix
       luasnip.lsp_expand(args.body)
     end,
   },
@@ -21,9 +44,13 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
+
+      -- elseif vim.fn["vsnip#available"](1) == 1 then --jump bug fix
+      --   feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      -- weird behavior : https://www.reddit.com/r/neovim/comments/um7p7u/nvim_nvimcmp_luasnip_jumps_to_previous_snippets/
       -- elseif luasnip.expand_or_jumpable() then
-      -- elseif luasnip.expand_or_locally_jumpable() then
-      --   luasnip.expand_or_jump()
+      elseif luasnip.expand_or_locally_jumpable() then
+        luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -31,6 +58,9 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
+
+      -- elseif vim.fn["vsnip#jumpable"](-1) == 1 then --jump bug fix
+      --   feedkey("<Plug>(vsnip-jump-prev)", "")
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
@@ -41,6 +71,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    -- { name = 'vsnip' }, --jump bug fix
   },
 
   formatting = {
