@@ -40,7 +40,7 @@ wk.setup {
 	show_help = true, -- show help message on the command line when the popup is visible
 }
 
-local opts = {
+local normal_opts = {
 	mode = 'n', -- NORMAL mode
 	prefix = '<leader>',
 	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
@@ -48,6 +48,16 @@ local opts = {
 	noremap = true, -- use `noremap` when creating keymaps
 	nowait = false, -- use `nowait` when creating keymaps
 }
+
+local visual_opts = {
+	mode = 'v', -- VISUAL mode
+	prefix = '<leader>',
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = false, -- use `nowait` when creating keymaps
+}
+
 -- MAPS 
 -- Set leader
 --vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', { noremap = true, silent = true })
@@ -109,7 +119,7 @@ vim.api.nvim_set_keymap('n', '<C-p>', '"+P', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "", "<cmd><cr>", { noremap = true, silent = true })
 
 
-local mappings = {
+local normal_mappings = {
 	['rr'] = 'Search and replace all',
 	['rs'] = 'Search and replace',
 
@@ -118,11 +128,13 @@ local mappings = {
 	['n'] = { '<cmd>bn<cr>', 'Next buffer' },
 	['p'] = { '<cmd>bp<cr>', 'Next buffer' },
 	['h'] = { '<cmd>TSBufToggle highlight<cr>', 'Enable TS highlight' },
+	['t'] = { '<cmd>TroubleToggle<cr>', 'Trouble' },
 	-- ['t'] = { '<cmd>ToggleTerm direction=horizontal<cr>', 'HTerminal' },
 	['T'] = { '<cmd>ToggleTerm direction=vertical<cr>', 'VTerminal' },
 	['<leader>'] = { '<cmd>NvimTreeToggle<cr>', 'Explorer' },
+	['z'] = { '<cmd>TransparentToggle<cr>', 'Toggle Transparancy' },
 	['D'] = 'Type definition',
-	['rn'] = 'Rename',
+	-- ['rn'] = 'Rename', ????
 	['ca'] = 'Code action',
 	['1'] = {'<cmd>b 1<cr>', 'Buffer 1'},
 	['2'] = {'<cmd>b 2<cr>', 'Buffer 2'},
@@ -131,8 +143,8 @@ local mappings = {
 	['5'] = {'<cmd>b 5<cr>', 'Buffer 5'},
 	o = {
 		name = 'Open',
-		p = { '<cmd>NvimTreeOpen `dirname $MYVIMRC`<cr>', 'cd to nvim configs' },
-		v = { '<cmd>NvimTreeOpen ~/vpatuta.xyz/content/<cr>', 'vpatuta.xyz' },
+		p = { '<cmd>NvimTreeOpen `dirname $MYVIMRC`<cr>', 'cd to nvim configs' }, --nvim tree reste bloque sur le nvim config
+		--v = { '<cmd>NvimTreeOpen ~/vpatuta.xyz/content/<cr>', 'vpatuta.xyz' },
 		g = { '<cmd>LazyGit<cr>', 'Lazygit' },
 	},
 	l = {
@@ -171,7 +183,7 @@ local mappings = {
 		r = 'Remove workspace folder',
 		l = 'List workspace folders',
 	},
-	t = {
+	f = {
 		name = 'Telescope',
 		f = {'<cmd>Telescope find_files<cr>', 'Files'},
 		g = {'<cmd>Telescope live_grep<cr>', 'Grep'},
@@ -193,4 +205,22 @@ local mappings = {
 	}
 }
 
-wk.register(mappings, opts)
+
+local visual_mappings = {
+    w = {
+    name = 'refactoring',
+    ['e'] = { [[<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], 'Extract Function' },
+    ['f'] = { [[<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], 'Extract Function To File ' }, 
+    ['v'] = { [[<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], 'Extract Variable' },
+    ['i'] = { [[<Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], 'Inline Variable' },
+
+    ['b'] = { [[<Esc><Cmd>lua require('refactoring').refactor('Extract Block')<CR>]], 'Extract Block' },
+    ['bf'] = { [[<Esc><Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]], 'Extract Block to File' },
+
+
+    }
+        -- ['ri'] = { [[<Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], 'Extrac Function' },
+}
+
+wk.register(normal_mappings, normal_opts)
+wk.register(visual_mappings, visual_opts)

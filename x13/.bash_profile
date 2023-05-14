@@ -24,6 +24,9 @@ eval $(opam env)
 #GL4D
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
+# mpi
+export PATH=/usr/local/mpich-3.4.1/bin:$PATH
+
 ##
 #DWM
 export DISPLAY=:0 

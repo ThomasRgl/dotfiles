@@ -10,7 +10,7 @@ if not status_ok_1 then
 	return
 end
 
-local servers = { 'sumneko_lua', 'pyright', 'rust_analyzer', 'gopls', 'clangd' }
+local servers = { 'lua_ls', 'pyright', 'rust_analyzer', 'gopls', 'clangd' }
 
 local settings = {
 	ui = {
@@ -56,17 +56,20 @@ for _, server in pairs(servers) do
 			'--background-index',
 			'--pch-storage=disk',
 			'--cross-file-rename',
-			'--log=info',
+			'--log=error',
+			-- '--log=info',
 			'--completion-style=detailed',
 			'--enable-config', -- clangd 11+ supports reading from .clangd configuration file
 			'--clang-tidy',
+            -- "--compile-commands-dir=/home/trgk",
 			-- "--clang-tidy-checks=-*,llvm-*,clang-analyzer-*,modernize-*,-modernize-use-trailing-return-type",
 			-- "--fallback-style=Google",
-			-- "--header-insertion=never",
+			"--header-insertion=never"
 			-- "--query-driver=<list-of-white-listed-complers>"
 		}
 		local clang_opts = {
 			arg = { unpack(clangd_flags) },
+			--arg = { table.unpack(clangd_flags) },
 		}
 		opts = vim.tbl_deep_extend('force', clang_opts, opts)
 	end

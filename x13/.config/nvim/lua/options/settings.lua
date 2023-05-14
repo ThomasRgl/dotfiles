@@ -14,8 +14,8 @@ opt.termguicolors = true
 opt.guifont = 'JetBrainsMono Nerd Font'
 --opt.guicursor = 'n-v-c-sm:hor20,i-ci-ve:ver20,r-cr-o:Block'
 opt.mouse = 'vin'
-opt.path = '.,,**h'
---opt.path = '**'
+--opt.path = '.,,**h'
+opt.path = '**'
 --opt.path = '.*.h, .*/*.h, .*/*/*.h'
 --opt.path = '.,,**h,*/*.h,*/*/*.h,*/*/*/*.h,*.h'
 opt.pumheight = 10
@@ -44,7 +44,7 @@ opt.termguicolors = true
 opt.cursorline = true
 
 --lines
-opt.wrap = true
+opt.wrap = false
 opt.scrolloff = 15
 opt.number = true
 
@@ -54,7 +54,7 @@ opt.hidden = true
 opt.undofile = true
 opt.updatetime = 300
 opt.backup = false
-opt.clipboard:prepend { 'unnamedplus' }
+-- opt.clipboard:prepend { 'unnamedplus' } --warning ??
 opt.viewoptions = 'folds,cursor'
 opt.sessionoptions = 'folds'
 opt.foldmethod = 'marker'
