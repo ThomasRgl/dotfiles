@@ -41,6 +41,7 @@ require('lsp')
 --require('lsp-config.nvim-cmp')
 
 require('refactoring')
+--require('typst.vim')
 
 
 

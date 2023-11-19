@@ -71,6 +71,9 @@ end
 M.on_attach = function(client, bufnr)
 	--[[ vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc') ]]
 	lsp_keymaps(bufnr)
+  --   if client.name == 'typst_lsp' then
+		-- client.server_capabilities.documentFormattingProvider = false
+	-- end
 	if client.name == 'sumneko_lua' then
 		client.server_capabilities.documentFormattingProvider = false
 	end

@@ -10,7 +10,7 @@ if not status_ok_1 then
 	return
 end
 
-local servers = { 'lua_ls', 'pyright', 'rust_analyzer', 'gopls', 'clangd' }
+local servers = { 'lua_ls', 'pyright', 'rust_analyzer', 'gopls', 'clangd', 'matlab_ls' } --'r_language_server'
 
 local settings = {
 	ui = {
@@ -45,6 +45,12 @@ for _, server in pairs(servers) do
 	}
 	server = vim.split(server, '@')[1]
 
+	-- if server == 'typst_lsp' then
+ --        local typst_opts = {
+ --            settings = {exportPdf = "onSave"};
+ --        }
+	-- 	opts = vim.tbl_deep_extend('force', typst_opts, opts)
+ --    end
 	if server == 'sumneko_lua' then
 		local sumneko_opts = require 'lsp.settings.sumneko_lua'
 		opts = vim.tbl_deep_extend('force', sumneko_opts, opts)
@@ -75,6 +81,17 @@ for _, server in pairs(servers) do
 	end
 	lspconfig[server].setup(opts)
 end
+
+-- require("lspconfig").typst_lsp.setup {
+--     -- on_attach = on_attach,
+--     -- flags = lsp_flags,
+--     settings = {
+--         -- commenting this out makes it work
+--         exportPdf = "never",
+--     },
+-- }
+-- require'lspconfig'.typst_lsp.setup{}
+
 
 local ok, rt = pcall(require, 'rust-tools')
 if not ok then

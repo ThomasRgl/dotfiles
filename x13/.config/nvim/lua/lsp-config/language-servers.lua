@@ -60,7 +60,7 @@ local lsp_flags = {
 }
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'matlab_ls', 'typst_lsp' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
@@ -68,6 +68,19 @@ for _, lsp in ipairs(servers) do
     flags = lsp_flags;
   }
 end
+
+-- require'lspconfig'.typst_lsp.setup{
+-- 	settings = {
+-- 		exportPdf = "onSave" -- Choose onType, onSave or never.
+--         -- serverPath = "" -- Normally, there is no need to uncomment it.
+-- 	}
+-- }
+-- require'lspconfig'.r_language_server.setup({
+--   -- on_attach = on_attach_custom,
+--   -- Debounce "textDocument/didChange" notifications because they are slowly
+--   -- processed (seen when going through completion list with `<C-N>`)
+--   -- flags = { debounce_text_changes = 150 },
+-- })
 
 --local lsp_flags = {
 --  -- This is the default in Nvim 0.7+

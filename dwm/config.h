@@ -82,6 +82,7 @@ static const char *screenshot[] = { "flameshot", "gui", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY,                       XK_Print,       spawn,          {.v = screenshot} },
 	{ MODKEY,                       XK_backslash,       spawn,          {.v = screenshot} },
 	{ MODKEY,                       XK_q,      spawn,          {.v = setkbfr} },
 	{ MODKEY,                       XK_a,      spawn,          {.v = setkbus} },

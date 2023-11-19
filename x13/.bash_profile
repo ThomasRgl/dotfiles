@@ -13,7 +13,7 @@
 
 #history
 export HISTCONTROL=erasedups
-export HISTSIZE=40000
+export HISTSIZE=80000
 
 #ocaml
 eval $(opam env)
@@ -31,6 +31,9 @@ export PATH=/usr/local/mpich-3.4.1/bin:$PATH
 #DWM
 export DISPLAY=:0 
 
+# R
+# export
+
 #export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
 
 #DISPLAY
@@ -40,3 +43,4 @@ export DISPLAY=:0
 # START XORG
 startx
 
+. "$HOME/.cargo/env"

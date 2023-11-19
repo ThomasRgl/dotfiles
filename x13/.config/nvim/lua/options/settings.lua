@@ -76,5 +76,7 @@ opt.conceallevel = 3
 opt.concealcursor = 'n'
 opt['foldenable'] = false
 
+opt.conceallevel=0 -- dont hide "" on json files 
+
 
 

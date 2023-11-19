@@ -54,6 +54,9 @@ return require('packer').startup(function(use)
     "neovim/nvim-lspconfig",
     }
 
+    -- typst
+    use {'kaarmu/typst.vim', ft = {'typst','typ'}}
+
     --cmp NEW
     --https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
     --
@@ -102,7 +105,7 @@ return require('packer').startup(function(use)
 
     -- telescope
     use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.1',
+      'nvim-telescope/telescope.nvim',
     -- or                            , branch = '0.1.x',
       requires = { {'nvim-lua/plenary.nvim'} }
 

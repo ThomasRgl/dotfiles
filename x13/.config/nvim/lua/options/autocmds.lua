@@ -28,6 +28,33 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
 	end,
 })
 
+--
+-- vim.cmd [[
+--   augroup packer_user_config
+--     au!
+--     autocmd BufNewFile,BufRead *.md*   set syntax=markdown
+--   augroup end
+-- ]]
+
+-- filetype
+vim.cmd "autocmd BufNewFile,BufRead *.vs* setfiletype glsl"
+vim.cmd "autocmd BufNewFile,BufRead *.fs* setfiletype glsl"
+vim.cmd "autocmd BufNewFile,BufRead *.cs* setfiletype glsl"
+vim.cmd "autocmd BufNewFile,BufRead *.md* setfiletype markdown"
+-- vim.cmd "autocmd BufNewFile,BufRead *.typ setfiletype typst"
+-- vim.cmd "autocmd BufNewFile,BufRead *.typst setfiletype typst"
+
+vim.cmd "autocmd BufNewFile,BufRead *.typ setfiletype markdown"
+
+    -- autocmd!
+    -- autocmd BufWritePost plugins.lua source <afile> | PackerSync
+
+-- au BufReadPost *.ezt set syntax=html
+--
+-- augroup twig_ft
+--   autocmd BufNewFile,BufRead *.html.twig   set syntax=html
+-- augroup END
+
 -- Highlight Yanked Text
 vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
 	callback = function()
