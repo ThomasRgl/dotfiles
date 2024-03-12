@@ -1,52 +1,43 @@
---require('lualine').setup {
---  options = {
---    icons_enabled = true,
---    theme = 'auto',
---    component_separators = { left = '', right = ''},
---    section_separators = { left = '', right = ''},
---    disabled_filetypes = {
---      statusline = {},
---      winbar = {},
---    },
---    ignore_focus = {},
---    always_divide_middle = true,
---    globalstatus = false,
---    refresh = {
---      statusline = 1000,
---      tabline = 1000,
---      winbar = 1000,
---    }
---  },
---  sections = {
---    lualine_a = {'mode'},
---    lualine_b = {'branch', 'diff', 'diagnostics'},
---    lualine_c = {'filename'},
---    lualine_x = {'encoding', 'fileformat', 'filetype'},
---    lualine_y = {'progress'},
---    lualine_z = {'location'}
---  },
---  inactive_sections = {
---    lualine_a = {},
---    lualine_b = {},
---    lualine_c = {'filename'},
---    lualine_x = {'location'},
---    lualine_y = {},
---    lualine_z = {}
---  },
---  tabline = {},
---  winbar = {},
---  inactive_winbar = {},
---  extensions = {}
---}
+local config = function()
+  require('refactoring').setup({
+    prompt_func_return_type = {
+        go = false,
+        java = false,
+
+        cpp = true,
+        c = true,
+        h = true,
+        hpp = true,
+        cxx = true,
+    },
+    prompt_func_param_type = {
+        go = false,
+        java = false,
+
+        cpp = true,
+        c = true,
+        h = true,
+        hpp = true,
+        cxx = true,
+    },
+    printf_statements = {},
+    print_var_statements = {},
+  })
+end
 
 
-local custom_gruvbox = require'lualine.themes.gruvbox'
-local custom_horizon = require'lualine.themes.horizon'
-local custom_dracula = require'lualine.themes.dracula'
 
--- Change the background of lualine_c section for normal mode
-custom_gruvbox.normal.c.bg = '#112233'
+return {
 
-require('lualine').setup {
-  options = { theme  = custom_dracula }
-}
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = config
+    -- config = function()
+    --   require("refactoring").setup()
+    -- end,
+  }
+
+

@@ -1,6 +1,10 @@
 local g = vim.g
 local opt = vim.opt
 
+-- [[ Setting options ]]
+-- See `:help vim.o`
+
+
 -- Globals 
 --g.do_filetype_lua = 1
 --g.did_load_filetypes = 0
@@ -13,7 +17,7 @@ g.tex_flavor = 'latex'
 opt.termguicolors = true
 opt.guifont = 'JetBrainsMono Nerd Font'
 --opt.guicursor = 'n-v-c-sm:hor20,i-ci-ve:ver20,r-cr-o:Block'
-opt.mouse = 'vin'
+opt.mouse = 'a' -- active mouse for all mods
 --opt.path = '.,,**h'
 opt.path = '**'
 --opt.path = '.*.h, .*/*.h, .*/*/*.h'
@@ -26,6 +30,8 @@ opt.expandtab = true
 opt.smarttab = true
 opt.shiftwidth = 4
 opt.tabstop = 4 --WHAT
+opt.ts = 4
+opt.sw = 4
 opt.smartindent = true
 
 --search
@@ -40,11 +46,14 @@ opt.splitright = true
 opt.fileencoding = 'utf-8'
 opt.termguicolors = true
 
+
 --cursor
 opt.cursorline = true
 
 --lines
 opt.wrap = false
+opt.breakindent = false -- when wrap true, indent the wrap
+
 opt.scrolloff = 15
 opt.number = true
 
@@ -64,7 +73,7 @@ opt.timeoutlen = 300
 
 opt.fillchars.eob = ' '
 opt.autochdir = false
-opt.clipboard='unnamedplus'
+opt.clipboard='unnamedplus' --  See `:help 'clipboard'`
 
 --????
 opt.iskeyword:prepend { '-' }
@@ -78,5 +87,7 @@ opt['foldenable'] = false
 
 opt.conceallevel=0 -- dont hide "" on json files 
 
+-- Keep signcolumn on by default
+vim.wo.signcolumn = 'yes' -- add column at the left of the line number column
 
 

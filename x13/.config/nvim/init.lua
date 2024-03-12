@@ -1,80 +1,39 @@
-if not pcall(require, 'impatient') then
-    print 'impatient.nvim not found! '
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+
+-- lazy bootstrap
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  }
 end
 
+vim.opt.rtp:prepend(lazypath)
+
+-- require("lazy").setup("plugins", {
+--   change_detection = { notify = false },
+-- })
 
 
--- :h option-list
--- :h option
-
--- :h vim-lsp
--- :LspInfo
--- :h lspconfig-server-configurations
-
---if not pcall(require, 'impatient') then
---    print 'impatient.nvim not found! '
---end
---
+require("lazy_setup")
 
 
-require('options.settings')
-
-require('packer-config')
-
-require('options.mappings')
-require('plugins.which-key')
-require('options.autocmds')
-
-
-require('plugins.nvim-tree')
-require('plugins.lualine')
-require('plugins.treesitter')
-require('plugins.telescope')
---require('plugins.shade')
-require('plugins.autopairs')
-require('plugins.comments')
-require('plugins.trouble')
-
--- lsp
---require("lsp-config.language-servers")
-require('lsp')
---require('lsp-config.nvim-cmp')
-
-require('refactoring')
---require('typst.vim')
+require("settings")
+require("mappings")
+require("autocmds")
+require("colorschemes")
 
 
 
+-- require("oldlsp.lsp")
+-- require("oldlsp.nvim-cmp")
 
-
-
---
---require('options.mappings')
---require('options.autocmds')
---
-----à remettre plus tard
---
-----plugin conf
---require('plugin-config.nvim-tree') --done
---require('plugin-config.lualine')
----- require('plugin-config.lualine')
---require('plugin-config.which-key')
---require('plugin-config.toggleterm')
-----require('plugin-config.indent-blankline')
---require('plugin-config.cmp')
---require('plugin-config.treesitter')
---require('plugin-config.dap')
---require('plugin-config.trouble')
---require('plugin-config.comments')
---require('plugin-config.autopairs')
---require('plugin-config.telescope')
---require('plugin-config.vimtex')
---
---
---require('lsp')
----- color scheme
-
-
-require('colors.nightfox')
---vim.cmd('colorscheme nordfox')
 

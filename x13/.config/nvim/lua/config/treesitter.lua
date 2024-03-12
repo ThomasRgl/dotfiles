@@ -1,16 +1,13 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-	print 'treesitter not found!'
-	return
-end
+-- [[ Configure Treesitter ]]
+-- See `:help nvim-treesitter`
+-- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 
-local status_ok, _ = pcall(require, "nvim-treesitter-refactor")
-if not status_ok then
-	print 'nvim-treesitter-refactor not found!'
-	return
-end
 
-configs.setup {
+-- vim.defer_fn(function()
+
+local treesitter = require("nvim-treesitter.configs")
+
+treesitter.setup {
 	ensure_installed = {
 		'bash',
 		'c',
@@ -62,3 +59,4 @@ configs.setup {
         },
     },
 }
+
